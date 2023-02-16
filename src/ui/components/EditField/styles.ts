@@ -4,7 +4,7 @@ const createFieldStyles: StyleFunction = ({ theme: { spacing } }) => ({
   maxWidth: '120px',
 
   input: {
-    padding: '8px',
+    padding: '4px',
 
     fontSize: '14px',
   },

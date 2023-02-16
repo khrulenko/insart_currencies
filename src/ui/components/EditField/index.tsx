@@ -7,15 +7,16 @@ import { createFieldStyles } from './styles';
 import Button from '../Button';
 
 interface Props {
-  value: number;
+  value: string;
   onChange: AnyFunction;
   onCancel: AnyFunction;
   onSave: AnyFunction;
+  disabled?: boolean;
 }
 
 const Field = styled(TextField)(createFieldStyles);
 
-const EditField = ({ value, onChange, onCancel, onSave }: Props) => {
+const EditField = ({ value, onChange, onCancel, onSave, disabled }: Props) => {
   const onChangeHandler = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => onChange(value);
@@ -25,7 +26,13 @@ const EditField = ({ value, onChange, onCancel, onSave }: Props) => {
       <Field size="small" value={value} onChange={onChangeHandler} />
 
       <Stack direction="column" spacing="4px">
-        <Button isOption title="Save" color="success" onClick={onSave}>
+        <Button
+          isOption
+          title="Save"
+          color="success"
+          onClick={onSave}
+          disabled={disabled}
+        >
           <SaveRoundedIcon />
         </Button>
 
