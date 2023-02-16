@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getNBURates } from './common/api';
+import { getBTCRate, getNBURates } from './common/api';
 import Exchange from './ui/components/Exchange';
 import MainLayout from './ui/components/MainLayout';
 import RatesTable from './ui/components/RatesTable';
@@ -10,6 +10,7 @@ const App = () => {
 
   useEffect(() => {
     getNBURates(dispatch);
+    getBTCRate(dispatch);
   }, []);
 
   return (

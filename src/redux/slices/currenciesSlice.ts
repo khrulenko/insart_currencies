@@ -19,7 +19,7 @@ const currenciesSlice = createSlice({
   initialState: [] as Currencies,
   reducers: {
     setCurrencies(state: Currencies, action: PayloadAction<Currencies>) {
-      state = action.payload;
+      state.push(...action.payload);
 
       return state;
     },

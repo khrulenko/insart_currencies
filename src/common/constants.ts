@@ -3,4 +3,5 @@ export enum CurrencyNames {
   USD = 'USD',
   EUR = 'EUR',
   PLN = 'PLN',
+  BTC = 'BTC',
 }
