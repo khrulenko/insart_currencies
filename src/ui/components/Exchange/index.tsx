@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, styled } from '@mui/material';
 import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import { CurrencyNames } from '../../../common/constants';
 import { getCurrencies } from '../../../redux/store';
 import SelectCurrency from '../SelectCurrency';
+import { createExchangeWrapperStyles } from './styles';
+
+const ExchangeWrapper = styled(Stack)(createExchangeWrapperStyles);
 
 const Exchange = () => {
   const [fromCurr, fromSet] = useState<CurrencyNames>(CurrencyNames.USD);
@@ -51,7 +54,7 @@ const Exchange = () => {
   }, [fromCurr, toCurr, fromAmount, currencies]);
 
   return (
-    <Stack direction="row" spacing={3}>
+    <ExchangeWrapper>
       <SelectCurrency
         label="type amount"
         amount={fromAmount}
@@ -72,7 +75,7 @@ const Exchange = () => {
         onAmountChange={toAmountSet}
         isDisabled
       />
-    </Stack>
+    </ExchangeWrapper>
   );
 };
 
