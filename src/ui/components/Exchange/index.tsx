@@ -56,7 +56,7 @@ const Exchange = () => {
   return (
     <ExchangeWrapper>
       <SelectCurrency
-        label="type amount"
+        label="Change"
         amount={fromAmount}
         currency={fromCurr}
         onCurrencyChange={fromSet}
@@ -68,7 +68,7 @@ const Exchange = () => {
       </Button>
 
       <SelectCurrency
-        label="result"
+        label="Get"
         amount={toAmount}
         currency={toCurr}
         onCurrencyChange={toSet}

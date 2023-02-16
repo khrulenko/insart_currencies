@@ -9,7 +9,7 @@ const createExchangeWrapperStyles: StyleFunction = ({
   display: 'flex',
   flexDirection: 'row',
 
-  gap: spacing(3),
+  gap: spacing(1),
 
   [down('md')]: {
     flexDirection: 'column',
