@@ -2,6 +2,7 @@ import { createTheme, ThemeOptions } from '@mui/material';
 import { blueGrey, grey } from '@mui/material/colors';
 import MuiCssBaseline from './MuiComponents/MuiCssBaseline';
 import MuiPaper from './MuiComponents/MuiPaper';
+import MuiTableCell from './MuiComponents/MuiTableCell';
 
 const palette = {
   primary: {
@@ -18,6 +19,7 @@ const theme = createTheme({
   components: {
     MuiCssBaseline,
     MuiPaper,
+    MuiTableCell,
   },
 } as ThemeOptions);
 

@@ -1,5 +1,11 @@
-import { Paper } from '@mui/material';
-import MUITable from '@mui/material/Table';
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from '@mui/material';
 import { Rates } from '../../../../redux/slices/ratesSlice';
 
 interface Props {
@@ -8,21 +14,23 @@ interface Props {
 
 const RatesTable = ({ rates }: Props) => (
   <Paper>
-    <MUITable>
-      <tbody>
-        <tr>
-          <th>currency</th>
-          <th>rate</th>
-        </tr>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Currency</TableCell>
+          <TableCell>Rate</TableCell>
+        </TableRow>
+      </TableHead>
 
+      <TableBody>
         {rates.map(({ currency, rate }) => (
-          <tr key={currency}>
-            <td>{currency}</td>
-            <td>{rate}</td>
-          </tr>
+          <TableRow key={currency}>
+            <TableCell>{currency}</TableCell>
+            <TableCell>{rate}</TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </MUITable>
+      </TableBody>
+    </Table>
   </Paper>
 );
 export default RatesTable;
