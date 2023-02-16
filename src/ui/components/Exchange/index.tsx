@@ -32,7 +32,7 @@ const Exchange = () => {
     let amount = 0;
 
     if (fromCurr === CurrencyNames.UAH && toCurr === CurrencyNames.UAH) {
-      amount = 1;
+      amount = fromAmount;
     }
 
     if (fromCurr !== CurrencyNames.UAH && toCurr === CurrencyNames.UAH) {
