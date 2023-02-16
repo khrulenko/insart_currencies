@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   Paper,
   Table,
@@ -5,33 +6,38 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  styled,
 } from '@mui/material';
-import { Currencies } from '../../../redux/slices/currenciesSlice';
+import { getCurrencies } from '../../../redux/store';
 import EditableCell from '../EditableCell';
+import { createTableWrapperStyles } from './styles';
 
-interface Props {
-  currencies: Currencies;
-}
+const TableWrapper = styled(Paper)(createTableWrapperStyles);
 
-const RatesTable = ({ currencies }: Props) => (
-  <Paper>
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>Currency</TableCell>
-          <TableCell>Rate</TableCell>
-        </TableRow>
-      </TableHead>
+const RatesTable = () => {
+  const currencies = useSelector(getCurrencies);
 
-      <TableBody>
-        {currencies.map((currency) => (
-          <TableRow key={currency.name}>
-            <TableCell>{currency.name}</TableCell>
-            <EditableCell currency={currency} />
+  return (
+    <TableWrapper>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Currency</TableCell>
+            <TableCell>Rate</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Paper>
-);
+        </TableHead>
+
+        <TableBody>
+          {currencies.map((currency) => (
+            <TableRow key={currency.name}>
+              <TableCell>{currency.name}</TableCell>
+              <EditableCell currency={currency} />
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableWrapper>
+  );
+};
+
 export default RatesTable;

@@ -8,7 +8,7 @@ interface Props {
 const MainLayout = ({ children }: Props) => {
   return (
     <Stack p={3}>
-      <Stack width="100%" spacing={3} alignItems="center">
+      <Stack width="100%" spacing={6} alignItems="center">
         {children}
       </Stack>
     </Stack>

@@ -1,11 +1,13 @@
 import { PropsWithTheme } from '../../../common/types';
 
-const MuiPaper = {
+const MuiSelect = {
   styleOverrides: {
     root: ({ theme: { spacing } }: PropsWithTheme) => ({
-      borderRadius: spacing(2),
+      maxWidth: '80px',
+
+      borderRadius: spacing(3),
     }),
   },
 };
 
-export default MuiPaper;
+export default MuiSelect;
