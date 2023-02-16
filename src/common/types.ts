@@ -1,3 +1,4 @@
+import { Theme } from '@mui/material';
 import { Currencies } from './constants';
 
 export interface NBURate {
@@ -7,3 +8,5 @@ export interface NBURate {
   cc: Currencies;
   exchangedate: string;
 }
+
+export type PropsWithTheme<T = any> = { theme: Theme } & T;
