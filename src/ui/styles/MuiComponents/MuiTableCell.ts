@@ -1,7 +1,7 @@
 const MuiTableCell = {
   styleOverrides: {
     root: () => ({
-      textAlign: 'center',
+      width: '240px',
 
       '& #editButton': {
         visibility: 'hidden',

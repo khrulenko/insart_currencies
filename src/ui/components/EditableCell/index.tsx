@@ -31,7 +31,7 @@ const EditableCell = ({ currency: { name, initialRate, rate } }: Props) => {
 
   return (
     <TableCell>
-      <Stack width="100%" alignItems="center">
+      <Stack width="100%" alignItems="start">
         <Stack
           spacing={1}
           minWidth="100px"
