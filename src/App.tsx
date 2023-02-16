@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNBURates } from './common/api';
-import { getRates } from './redux/store';
-import MainLayout from './ui/styles/components/MainLayout';
-import RatesTable from './ui/styles/components/RatesTable';
+import { getCurrencies } from './redux/store';
+import MainLayout from './ui/components/MainLayout';
+import RatesTable from './ui/components/RatesTable';
 
 const App = () => {
   const dispatch = useDispatch();
-  const rates = useSelector(getRates);
+  const currencies = useSelector(getCurrencies);
 
   useEffect(() => {
     getNBURates(dispatch);
@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <MainLayout>
-      <RatesTable rates={rates} />
+      <RatesTable currencies={currencies} />
     </MainLayout>
   );
 };

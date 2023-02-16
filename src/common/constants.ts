@@ -1,4 +1,4 @@
-export enum Currencies {
+export enum CurrencyNames {
   UAH = 'UAH',
   USD = 'USD',
   EUR = 'EUR',

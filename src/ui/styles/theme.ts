@@ -1,5 +1,6 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 import { blueGrey, grey } from '@mui/material/colors';
+import MuiButton from './MuiComponents/MuiButton';
 import MuiCssBaseline from './MuiComponents/MuiCssBaseline';
 import MuiPaper from './MuiComponents/MuiPaper';
 import MuiTableCell from './MuiComponents/MuiTableCell';
@@ -20,6 +21,7 @@ const theme = createTheme({
     MuiCssBaseline,
     MuiPaper,
     MuiTableCell,
+    MuiButton,
   },
 } as ThemeOptions);
 

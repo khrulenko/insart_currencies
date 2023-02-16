@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ratesReducer, { Rates } from '../slices/ratesSlice';
+import currenciesReducer, { Currencies } from '../slices/currenciesSlice';
 
 interface State {
-  rates: Rates;
+  currencies: Currencies;
 }
 
 // selectors
@@ -11,11 +11,11 @@ const createSelector =
   (state: State) =>
     state[dataField];
 
-export const getRates = createSelector('rates');
+export const getCurrencies = createSelector('currencies');
 
 // redusers
 export const reducers = {
-  rates: ratesReducer,
+  currencies: currenciesReducer,
 };
 
 // store

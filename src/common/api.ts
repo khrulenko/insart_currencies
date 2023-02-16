@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import { setRates } from '../redux/slices/ratesSlice';
-import { Currencies } from './constants';
+import { setCurrencies } from '../redux/slices/currenciesSlice';
+import { CurrencyNames } from './constants';
 import { NBURate } from './types';
 import { createRateFromNBUData } from './utils';
 
@@ -12,12 +12,12 @@ export const getNBURates = async (dispatch: Dispatch) => {
   const data = await nbuResponse.json();
 
   const nbuRates = data.filter((curr: NBURate) =>
-    [Currencies.USD, Currencies.EUR, Currencies.PLN].includes(curr.cc)
+    [CurrencyNames.USD, CurrencyNames.EUR, CurrencyNames.PLN].includes(curr.cc)
   );
 
   const rates = nbuRates.map((nbuRate: NBURate) =>
     createRateFromNBUData(nbuRate)
   );
 
-  dispatch(setRates(rates));
+  dispatch(setCurrencies(rates));
 };

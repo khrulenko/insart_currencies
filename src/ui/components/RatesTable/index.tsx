@@ -6,13 +6,14 @@ import {
   TableRow,
   TableCell,
 } from '@mui/material';
-import { Rates } from '../../../../redux/slices/ratesSlice';
+import { Currencies } from '../../../redux/slices/currenciesSlice';
+import EditableCell from '../EditableCell';
 
 interface Props {
-  rates: Rates;
+  currencies: Currencies;
 }
 
-const RatesTable = ({ rates }: Props) => (
+const RatesTable = ({ currencies }: Props) => (
   <Paper>
     <Table>
       <TableHead>
@@ -23,10 +24,10 @@ const RatesTable = ({ rates }: Props) => (
       </TableHead>
 
       <TableBody>
-        {rates.map(({ currency, rate }) => (
-          <TableRow key={currency}>
-            <TableCell>{currency}</TableCell>
-            <TableCell>{rate}</TableCell>
+        {currencies.map((currency) => (
+          <TableRow key={currency.name}>
+            <TableCell>{currency.name}</TableCell>
+            <EditableCell currency={currency} />
           </TableRow>
         ))}
       </TableBody>
