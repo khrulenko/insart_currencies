@@ -13,4 +13,7 @@ const isValueValid = (value: string, initialRate: number): boolean =>
 const getErrorCounterValue = (): number =>
   Number(localStorage.getItem('errorCounter'));
 
-export { createRateFromNBUData, isValueValid, getErrorCounterValue };
+const roundTo = (value: number, amountAfterPoint: number): number =>
+  Number(value.toFixed(amountAfterPoint));
+
+export { createRateFromNBUData, isValueValid, getErrorCounterValue, roundTo };

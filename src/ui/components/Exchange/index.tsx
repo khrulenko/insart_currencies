@@ -6,6 +6,7 @@ import { CurrencyNames } from '../../../common/constants';
 import { getCurrencies, getServerError } from '../../../redux/store';
 import SelectCurrency from '../SelectCurrency';
 import { createExchangeWrapperStyles } from './styles';
+import { roundTo } from '../../../common/utils';
 
 const ExchangeWrapper = styled(Stack)(createExchangeWrapperStyles);
 
@@ -16,6 +17,7 @@ const Exchange = () => {
   const [toCurr, toCurrSet] = useState<CurrencyNames>(CurrencyNames.UAH);
   const [toAmount, toAmountSet] = useState<number>(0);
 
+  const roundedtoAmount = roundTo(toAmount, 10);
   const currencies = useSelector(getCurrencies);
   const serverError = useSelector(getServerError);
 
@@ -71,7 +73,7 @@ const Exchange = () => {
 
       <SelectCurrency
         label="Get"
-        amount={toAmount}
+        amount={roundedtoAmount}
         currency={toCurr}
         onCurrencyChange={toCurrSet}
         onAmountChange={toAmountSet}
