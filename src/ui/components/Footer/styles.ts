@@ -1,9 +1,6 @@
 import { StyleFunction } from '../../../common/types';
 
 const createFooterWrapperStyles: StyleFunction = ({ theme: { spacing } }) => ({
-  position: 'fixed',
-  bottom: 0,
-
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

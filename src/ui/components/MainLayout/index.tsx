@@ -9,7 +9,7 @@ interface Props {
 
 const MainLayout = ({ children }: Props) => {
   return (
-    <>
+    <Stack minHeight="100vh" height="100%" justifyContent="space-between">
       <Header />
 
       <Stack p={4}>
@@ -19,7 +19,7 @@ const MainLayout = ({ children }: Props) => {
       </Stack>
 
       <Footer />
-    </>
+    </Stack>
   );
 };
 
