@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Button, Stack, styled } from '@mui/material';
 import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import { CurrencyNames } from '../../../common/constants';
-import { getCurrencies } from '../../../redux/store';
+import { getCurrencies, getServerError } from '../../../redux/store';
 import SelectCurrency from '../SelectCurrency';
 import { createExchangeWrapperStyles } from './styles';
 
@@ -17,6 +17,7 @@ const Exchange = () => {
   const [toAmount, toAmountSet] = useState<number>(0);
 
   const currencies = useSelector(getCurrencies);
+  const serverError = useSelector(getServerError);
 
   const swap = () => {
     const savedFrom = fromCurr;
@@ -61,6 +62,7 @@ const Exchange = () => {
         currency={fromCurr}
         onCurrencyChange={fromCurrSet}
         onAmountChange={fromAmountSet}
+        isDisabled={serverError}
       />
 
       <Button onClick={swap}>

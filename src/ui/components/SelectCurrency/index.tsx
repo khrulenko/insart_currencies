@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react';
-import { useSelector } from 'react-redux';
 import {
   MenuItem,
   Select,
@@ -9,7 +8,6 @@ import {
 } from '@mui/material';
 import { CurrencyNames } from '../../../common/constants';
 import { AnyFunction } from '../../../common/types';
-import { getCurrencies } from '../../../redux/store';
 
 interface Props {
   currency: CurrencyNames;
@@ -20,6 +18,8 @@ interface Props {
   isDisabled?: boolean;
 }
 
+const currencyNames = Object.values(CurrencyNames);
+
 const SelectCurrency = ({
   amount,
   currency,
@@ -28,8 +28,6 @@ const SelectCurrency = ({
   label = '',
   isDisabled = false,
 }: Props) => {
-  const currencies = useSelector(getCurrencies);
-
   const onAmountChangeHandler = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => onAmountChange(value);
@@ -49,9 +47,7 @@ const SelectCurrency = ({
       />
 
       <Select value={currency} size="small" onChange={onCurrencyChangeHandler}>
-        <MenuItem value={'UAH'}>UAH</MenuItem>
-
-        {currencies.map(({ name }) => (
+        {currencyNames.map((name) => (
           <MenuItem key={name} value={name}>
             {name}
           </MenuItem>

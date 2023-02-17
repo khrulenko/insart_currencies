@@ -14,9 +14,11 @@ export interface NewCurrencyData {
 
 export type Currencies = Currensy[];
 
+const initialState: Currencies = [];
+
 const currenciesSlice = createSlice({
   name: 'currencies',
-  initialState: [] as Currencies,
+  initialState,
   reducers: {
     setCurrencies(state: Currencies, action: PayloadAction<Currencies>) {
       state.push(...action.payload);
