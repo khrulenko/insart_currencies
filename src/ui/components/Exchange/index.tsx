@@ -10,10 +10,10 @@ import { createExchangeWrapperStyles } from './styles';
 const ExchangeWrapper = styled(Stack)(createExchangeWrapperStyles);
 
 const Exchange = () => {
-  const [fromCurr, fromSet] = useState<CurrencyNames>(CurrencyNames.USD);
+  const [fromCurr, fromCurrSet] = useState<CurrencyNames>(CurrencyNames.USD);
   const [fromAmount, fromAmountSet] = useState<number>(0);
 
-  const [toCurr, toSet] = useState<CurrencyNames>(CurrencyNames.UAH);
+  const [toCurr, toCurrSet] = useState<CurrencyNames>(CurrencyNames.UAH);
   const [toAmount, toAmountSet] = useState<number>(0);
 
   const currencies = useSelector(getCurrencies);
@@ -21,8 +21,8 @@ const Exchange = () => {
   const swap = () => {
     const savedFrom = fromCurr;
 
-    fromSet(toCurr);
-    toSet(savedFrom);
+    fromCurrSet(toCurr);
+    toCurrSet(savedFrom);
   };
 
   const getRate = (currName: string) => {
@@ -59,7 +59,7 @@ const Exchange = () => {
         label="Change"
         amount={fromAmount}
         currency={fromCurr}
-        onCurrencyChange={fromSet}
+        onCurrencyChange={fromCurrSet}
         onAmountChange={fromAmountSet}
       />
 
@@ -71,7 +71,7 @@ const Exchange = () => {
         label="Get"
         amount={toAmount}
         currency={toCurr}
-        onCurrencyChange={toSet}
+        onCurrencyChange={toCurrSet}
         onAmountChange={toAmountSet}
         isDisabled
       />

@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Typography fontWeight="bold" variant="h6">
-        Currensy exchange app
+        Currency exchange app
       </Typography>
 
       <CurrencyExchangeRoundedIcon />

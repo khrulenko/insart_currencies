@@ -9,32 +9,30 @@ const URL_NBU =
 
 const URL_BTC = 'https://whitebit.com/api/v4/public/ticker';
 
-export const getNBURates = async (dispatch: Dispatch) => {
-  const response = await fetch(URL_NBU);
-  const data = await response.json();
+const currencyNames = Object.values(CurrencyNames);
 
-  const nbuRates = data.filter((curr: NBURate) =>
-    [CurrencyNames.USD, CurrencyNames.EUR, CurrencyNames.PLN].includes(curr.cc)
+export const getCurrenciesData = async (dispatch: Dispatch) => {
+  const nbuResponse = await fetch(URL_NBU);
+  const nbuData = await nbuResponse.json();
+
+  const btcResponse = await fetch(URL_BTC);
+  const btcRate = await btcResponse.json();
+
+  const nbuRates = nbuData.filter((curr: NBURate) =>
+    currencyNames.includes(curr.cc)
   );
 
-  const rates = nbuRates.map((nbuRate: NBURate) =>
+  const nbuRatesData = nbuRates.map((nbuRate: NBURate) =>
     createRateFromNBUData(nbuRate)
   );
 
-  dispatch(setCurrencies(rates));
-};
+  const btcData = btcRate['BTC_UAH'];
 
-export const getBTCRate = async (dispatch: Dispatch) => {
-  const response = await fetch(URL_BTC);
-  const data = await response.json();
-
-  const BTCData = data['BTC_UAH'];
-
-  const BTCCurrency: Currensy = {
+  const btcCurrency: Currensy = {
     name: CurrencyNames.BTC,
-    initialRate: BTCData.last_price,
-    rate: BTCData.last_price,
+    initialRate: btcData.last_price,
+    rate: btcData.last_price,
   };
 
-  dispatch(setCurrencies([BTCCurrency]));
+  dispatch(setCurrencies([...nbuRatesData, btcCurrency]));
 };
