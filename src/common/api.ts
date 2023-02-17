@@ -8,9 +8,13 @@ import { createRateFromNBUData, getErrorCounterValue } from './utils';
 const URL_NBU =
   'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
-const URL_BTC = 'https://whitebit.com/api/v4/public/ticker';
-
 const currencyNames = Object.values(CurrencyNames);
+
+const btcMock: Currensy = {
+  name: CurrencyNames.BTC,
+  initialRate: 941785.81,
+  rate: 941785.81,
+};
 
 export const getCurrenciesData = async (dispatch: Dispatch) => {
   const errorCounterValue = getErrorCounterValue();
@@ -23,9 +27,6 @@ export const getCurrenciesData = async (dispatch: Dispatch) => {
     const nbuResponse = await fetch(URL_NBU);
     const nbuData = await nbuResponse.json();
 
-    const btcResponse = await fetch(URL_BTC);
-    const btcData = await btcResponse.json();
-
     const nbuRates = nbuData.filter((curr: NBURate) =>
       currencyNames.includes(curr.cc)
     );
@@ -34,15 +35,13 @@ export const getCurrenciesData = async (dispatch: Dispatch) => {
       createRateFromNBUData(nbuRate)
     );
 
-    const btcRateData = btcData['BTC_UAH'];
+    const btcRateData = await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(btcMock);
+      }, 300);
+    });
 
-    const btcCurrency: Currensy = {
-      name: CurrencyNames.BTC,
-      initialRate: btcRateData.last_price,
-      rate: btcRateData.last_price,
-    };
-
-    dispatch(setCurrencies([...nbuRatesData, btcCurrency]));
+    dispatch(setCurrencies([...nbuRatesData, btcRateData]));
   } catch (error) {
     dispatch(setServerError(true));
   } finally {
