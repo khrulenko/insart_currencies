@@ -8,7 +8,7 @@ const createRateFromNBUData = (nbuRate: NBURate): Currensy => {
 };
 
 const isValueValid = (value: string, initialRate: number): boolean =>
-  Number(value) > initialRate * 1.1 || Number(value) < initialRate * 0.9;
+  Number(value) <= initialRate * 1.1 && Number(value) >= initialRate * 0.9;
 
 const getErrorCounterValue = (): number =>
   Number(localStorage.getItem('errorCounter'));

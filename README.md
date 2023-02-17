@@ -14,3 +14,4 @@ Used technologies:
 - Redux
   - toolkit
 - Material UI
+- Jest

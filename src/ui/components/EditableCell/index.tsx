@@ -39,11 +39,11 @@ const EditableCell = ({ currency: { name, initialRate, rate } }: Props) => {
 
   useEffect(() => {
     if (isValueValid(value, initialRate)) {
-      isValidSet(false);
+      isValidSet(true);
       return;
     }
 
-    isValidSet(true);
+    isValidSet(false);
   }, [value]);
 
   return (
