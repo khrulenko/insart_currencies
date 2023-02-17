@@ -1,5 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import { Currensy, setCurrencies } from '../redux/slices/currenciesSlice';
+import { setCurrencies } from '../redux/slices/currenciesSlice';
 import { setServerError } from '../redux/slices/serverErrorSlice';
 import { CurrencyNames } from './constants';
 import { btcMock } from './mocks';

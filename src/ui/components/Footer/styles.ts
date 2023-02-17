@@ -15,6 +15,8 @@ const createFooterWrapperStyles: StyleFunction = ({ theme: { spacing } }) => ({
 
   borderBottomLeftRadius: '0px',
   borderBottomRightRadius: '0px',
+
+  zIndex: 1,
 });
 
 export { createFooterWrapperStyles };
