@@ -2,6 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { Currensy, setCurrencies } from '../redux/slices/currenciesSlice';
 import { setServerError } from '../redux/slices/serverErrorSlice';
 import { CurrencyNames } from './constants';
+import { btcMock } from './mocks';
 import { NBURate } from './types';
 import { createRateFromNBUData, getErrorCounterValue } from './utils';
 
@@ -9,12 +10,6 @@ const URL_NBU =
   'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
 const currencyNames = Object.values(CurrencyNames);
-
-const btcMock: Currensy = {
-  name: CurrencyNames.BTC,
-  initialRate: 941785.81,
-  rate: 941785.81,
-};
 
 export const getCurrenciesData = async (dispatch: Dispatch) => {
   const errorCounterValue = getErrorCounterValue();

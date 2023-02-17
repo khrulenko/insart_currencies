@@ -15,3 +15,4 @@ Used technologies:
   - toolkit
 - Material UI
 - Jest
+- React Testing Library

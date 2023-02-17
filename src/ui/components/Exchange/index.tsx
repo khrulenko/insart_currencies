@@ -67,7 +67,7 @@ const Exchange = () => {
         isDisabled={serverError}
       />
 
-      <Button onClick={swap}>
+      <Button data-testid="swapButton" onClick={swap}>
         <SwapHorizRoundedIcon />
       </Button>
 
