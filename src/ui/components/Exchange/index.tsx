@@ -35,23 +35,7 @@ const Exchange = () => {
   };
 
   useEffect(() => {
-    let amount = 0;
-
-    if (fromCurr === CurrencyNames.UAH && toCurr === CurrencyNames.UAH) {
-      amount = fromAmount;
-    }
-
-    if (fromCurr !== CurrencyNames.UAH && toCurr === CurrencyNames.UAH) {
-      amount = fromAmount * getRate(fromCurr);
-    }
-
-    if (fromCurr === CurrencyNames.UAH && toCurr !== CurrencyNames.UAH) {
-      amount = fromAmount / getRate(toCurr);
-    }
-
-    if (fromCurr !== CurrencyNames.UAH && toCurr !== CurrencyNames.UAH) {
-      amount = (getRate(fromCurr) / getRate(toCurr)) * fromAmount;
-    }
+    const amount = (getRate(fromCurr) / getRate(toCurr)) * fromAmount;
 
     toAmountSet(amount);
   }, [fromCurr, toCurr, fromAmount, currencies]);
